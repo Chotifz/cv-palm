@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { axiosInstance } from ".";
 
 export const useFetchProduct = () => {
@@ -27,7 +27,7 @@ export const useCreateProduct = ({ onSuccess }) => {
   return useMutation({
     mutationFn: async (body) => {
       const dataResponse = await axiosInstance.post(`/products`, body);
-      return dataResponse;
+      return dataResponse.data;
     },
     onSuccess,
   });
@@ -47,7 +47,7 @@ export const useEditProduct = ({ onSuccess }) => {
   return useMutation({
     mutationFn: async (id) => {
       const dataResponse = await axiosInstance.patch(`/products/${id}`);
-      return dataResponse;
+      return dataResponse.data;
     },
     onSuccess,
   });

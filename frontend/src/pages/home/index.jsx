@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import ProductList from "./components/ProductList";
 import { useFetchProduct } from "../../api/useProducts";
+import Carousel from "../../components/Carousel";
+import Navbar from "./components/Navbar";
 
-const Home = ({ scrollToAbout }) => {
+const Home = () => {
   const aboutRef = useRef(null);
 
   const handleScrollToAbout = () => {
@@ -17,6 +19,8 @@ const Home = ({ scrollToAbout }) => {
 
   return (
     <div>
+      <Navbar handleScrollToAbout={handleScrollToAbout} />
+      <Carousel />
       <div className="flex flex-col items-center mt-10">
         <h1 className="text-3xl font-bold mb-8">Products</h1>
         {isLoading ? (

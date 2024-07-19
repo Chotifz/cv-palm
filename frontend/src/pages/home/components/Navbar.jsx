@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ handleScrollToAbout }) {
   return (
     <>
       <div className="navbar bg-base-100">
@@ -19,7 +19,9 @@ export default function Navbar() {
           <Link className="btn btn-ghost" to={"/"}>
             Home
           </Link>
-
+          <button className="btn btn-ghost" onClick={handleScrollToAbout}>
+            About
+          </button>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
