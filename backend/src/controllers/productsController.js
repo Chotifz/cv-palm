@@ -29,26 +29,26 @@ const getProductById = async (req, res) => {
 const createProduct = async (req, res) => {
   try {
     const newRoomData = req.body;
-    let image = newRoomData.image;
+    // let image = newRoomData.image;
 
-    if (req.file) {
-      const localFilePath = req.file.path;
+    // if (req.file) {
+    //   const localFilePath = req.file.path;
 
-      const uploadResult = await cloudinary.uploader.upload(localFilePath, {
-        folder: "products",
-      });
+    //   const uploadResult = await cloudinary.uploader.upload(localFilePath, {
+    //     folder: "products",
+    //   });
 
-      image = uploadResult.secure_url;
+    //   image = uploadResult.secure_url;
 
-      fs.unlinkSync(localFilePath);
-    }
+    //   fs.unlinkSync(localFilePath);
+    // }
 
     const product = await prisma.product.create({
       data: {
         name: newRoomData.name,
         price: parseFloat(newRoomData.price),
         description: newRoomData.description,
-        image: image,
+        image: newRoomData.image,
       },
     });
 

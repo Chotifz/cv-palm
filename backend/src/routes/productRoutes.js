@@ -9,7 +9,7 @@ router.get("/:id", productsController.getProductById);
 router.post(
   "/",
   // auth,
-  upload.single("image"),
+  // upload.single("image"),
   productsController.createProduct
 );
 router.put(
